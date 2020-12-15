@@ -7,8 +7,7 @@ import './App.css';
 function App() {
   const [list, setTasks] = useState([]);
   const [title, setTitle] = useState("");
-  // const [completed, setCompleted] = useState(false);
-  // const [list, updateList] = useState([]);
+
 
   const updateTasks = () => {
     setTasks(list);
@@ -22,15 +21,12 @@ function App() {
       title: title
     }
 
-  
-
-  const addToList = (index) => {
-    const currentTask = list[index];
-    updateList([...list, currentTask]);
+    setTasks([...list, newTask]);
+    setTitle("");
   }
 
   const removeFromList = (index) => {
-    updateList([...list.slice(0, index), ...list.slice(index + 1)]);
+    updateTasks([...list.slice(0, index), ...list.slice(index + 1)]);
   }
 
   useEffect(() => {
@@ -39,17 +35,16 @@ function App() {
   }, []);
 
   return (
-    <div>
-    <h1>To Do List App</h1>
+    <div className="App">
+    <h1>Amanda.do</h1>
+    <h2>What glass ceilings <br />will you break today?</h2>
     <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Task Name</label>
+      <label htmlFor="title"></label>
       <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
       <input type="submit" value="Add Task" />
     </form>
 
-    
-
-    <List listItem={list} removeFromList={removeFromList} />
+    <List listItem={list} removeFromList={removeFromList}/>
     </div>
   )
 }
