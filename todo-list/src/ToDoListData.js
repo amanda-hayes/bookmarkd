@@ -1,4 +1,4 @@
-const tasks = [
+const toDoListData = [
     {
       title: "Learn more about React",
       completed: true
@@ -12,5 +12,3 @@ const tasks = [
       completed: false
     }
   ];
-
-  export default TaskData;
