@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import Task from './Task';
 import List from './List';
+
 import './App.css';
 
 function App() {
-  const [toDoListData, setTasks] = useState([]);
+  const [list, setTasks] = useState([]);
   const [title, setTitle] = useState("");
   // const [completed, setCompleted] = useState(false);
-  const [list, updateList] = useState([]);
+  // const [list, updateList] = useState([]);
 
   const updateTasks = () => {
-    setTasks(toDoListData);
-    console.log(toDoListData);
+    setTasks(list);
+    console.log(list);
   }
 
   const handleSubmit = (e) => {
@@ -21,12 +22,10 @@ function App() {
       title: title
     }
 
-    setTasks([...toDoListData, newTask]);
-    setTitle("");
-  }
+  
 
   const addToList = (index) => {
-    const currentTask = toDoListData[index];
+    const currentTask = list[index];
     updateList([...list, currentTask]);
   }
 
@@ -48,18 +47,7 @@ function App() {
       <input type="submit" value="Add Task" />
     </form>
 
-    <ul>
-      {
-        toDoListData.map((task, index) => {
-          return <Task
-          title={task.title}
-          completed={task.completed}
-          addToList={addToList}
-          index={index}
-          /> 
-        })
-      }
-    </ul>
+    
 
     <List listItem={list} removeFromList={removeFromList} />
     </div>
